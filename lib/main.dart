@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gestionnaire_taches/screens/task_list_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,40 +19,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const TaskListScreen(),
-    );
-  }
-}
-
-class TaskListScreen extends StatelessWidget {
-  const TaskListScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final taches = [
-      'Réviser Flutter',
-      'Faire les courses',
-      'Appeler un client',
-      'Préparer le portfolio',
-    ];
-
-    return Scaffold(
-      appBar: AppBar(title: const Text('Mes tâches')),
-      body: ListView.builder(
-        itemCount: taches.length,
-        itemBuilder: (context, index) {
-          return Card(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-            child: ListTile(
-              leading: const Icon(Icons.check_circle_outline),
-              title: Text(taches[index]),
-            ),
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
